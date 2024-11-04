@@ -1,7 +1,8 @@
-// 1. press one number - save that number
+// 1. press first number - save that number
 // 2. press operator - save that operator
 // 3. press second number - save second number
-// 4. press equal sign = make calculation
+// 4. press equal sign - make calculation
+// 5. result become first number - to continue the calculation
 
 let firstNumber;
 let secondNumber;
@@ -28,8 +29,10 @@ function getNumber(num) {
 }
 
 function getOperator(op) {
-  step = 2;
-  operation = op;
+  if (step === 1) {
+    step = 2;
+    operation = op;
+  }
 }
 
 function clearDisplay() {
@@ -46,17 +49,20 @@ function clearDisplay() {
 const calculateEquals = () => {
   if (operation === "+") {
     result = firstNumber + secondNumber;
-    display.value = result;
   } else if (operation === "-") {
     result = firstNumber - secondNumber;
-    display.value = result;
   } else if (operation === "*") {
     result = firstNumber * secondNumber;
-    display.value = result;
   } else if (operation === "/") {
-    result = firstNumber / secondNumber;
-    display.value = result;
+    result = secondNumber !== 0 ? firstNumber / secondNumber : "Error";
   }
+  display.value = result;
+  firstNumber = result; // Set result as the first number for further calculations
+  numArray = [result]; // Update numArray to allow further operations
+  secondNumArray = [];
+  step = 1; // Reset step to accept a new operator
+  secondNumber = null;
+  operation = null;
 };
 
 function delLastInput() {
