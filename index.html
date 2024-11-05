@@ -9,31 +9,42 @@
   <body>
     <div class="container">
       <section class="header">
-        <h1>My Calculator</h1>
+        <div class="topDesign">
+          <div>CASIO</div>
+          <div class="solarPanel">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+          </div>
+        </div>
+        <input type="text" id="calculationDisplay" placeholder="0" disabled />
         <input type="text" id="display" placeholder="0" disabled />
+        <div class="desginLine"></div>
+        <div class="desginLineTwo"></div>
       </section>
       <section class="buttons">
-        <button onclick="getNumber(1)">1</button>
-        <button onclick="getNumber(2)">2</button>
-        <button onclick="getNumber(3)">3</button>
-        <button onclick="getOperator(`+`)">+</button>
-
-        <button onclick="getNumber(4)">4</button>
-        <button onclick="getNumber(5)">5</button>
-        <button onclick="getNumber(6)">6</button>
-        <button onclick="getOperator(`-`)">-</button>
+        <button onclick="clearDisplay()">AC</button>
+        <button onclick="delLastInput()">DEL</button>
+        <button onclick="getOperator(`/`)">/</button>
+        <button onclick="getOperator(`*`)">x</button>
 
         <button onclick="getNumber(7)">7</button>
         <button onclick="getNumber(8)">8</button>
         <button onclick="getNumber(9)">9</button>
-        <button onclick="getOperator(`*`)">x</button>
+        <button onclick="getOperator(`-`)">-</button>
 
-        <button onclick="clearDisplay()">C</button>
-        <button onclick="getNumber(0)">0</button>
-        <button onclick="calculateEquals()">=</button>
-        <button onclick="getOperator(`/`)">/</button>
+        <button onclick="getNumber(4)">4</button>
+        <button onclick="getNumber(5)">5</button>
+        <button onclick="getNumber(6)">6</button>
+        <button onclick="getOperator(`+`)">+</button>
 
-        <button onclick="delLastInput()">DEL</button>
+        <button onclick="getNumber(1)">1</button>
+        <button onclick="getNumber(2)">2</button>
+        <button onclick="getNumber(3)">3</button>
+        <button class="equalButton" onclick="calculateEquals()">=</button>
+
+        <button class="zeroButton" onclick="getNumber(0)">0</button>
         <button onclick="addDecimal()">.</button>
       </section>
     </div>

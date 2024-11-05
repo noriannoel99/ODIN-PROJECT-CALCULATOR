@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", serif;
+}
+
+body {
+  height: 100vh;
+  background: #24293b;
+}
+
+.container {
+  width: 400px;
+  background-color: #2f3445;
+  padding: 50px 30px;
+  position: absolute; /*centering the container*/
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0, 4, 20, 0.4);
+}
+
+.header {
+  width: 100%;
+}
+
+.topDesign {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #878a94;
+  font-size: large;
+  font-weight: bold;
+}
+
+.solarPanel {
+  display: flex;
+}
+
+.box {
+  background: #4d5672;
+  width: 15px;
+  height: 1rem;
+  margin: 1px;
+}
+
+#calculationDisplay {
+  width: 100%;
+  border: none;
+  padding: 15px 10px;
+  background-color: transparent;
+  color: #757b8f;
+  text-align: right;
+}
+
+#display {
+  width: 100%;
+  padding: 15px 10px;
+  text-align: right;
+  border: none;
+  background-color: #fb4756;
+  color: #ffffff;
+  font-size: 35px;
+}
+
+#display::placeholder {
+  color: #ffffff;
+}
+
+.desginLine {
+  background: #683c96;
+  margin-top: 1px;
+  height: 0.5rem;
+}
+
+.desginLineTwo {
+  background: #0084db;
+  margin-top: 1px;
+  height: 0.5rem;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 40px;
+}
+
+.buttons button {
+  font-size: 20px;
+  padding: 17px;
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttons button:hover {
+  background-color: rgb(50, 55, 71);
+  box-shadow: 0 8px 15px #292b31;
+  transition: 0.3;
+}
+
+.equalButton {
+  grid-row: span 2;
+}
+
+.zeroButton {
+  grid-column: span 2;
+}

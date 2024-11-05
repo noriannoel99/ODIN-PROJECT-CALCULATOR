@@ -14,6 +14,7 @@ let numArray = [];
 let secondNumArray = [];
 
 let display = document.getElementById("display");
+let calculationDisplay = document.getElementById("calculationDisplay");
 
 function getNumber(num) {
   if (step === 0 || step === 1) {
@@ -21,10 +22,13 @@ function getNumber(num) {
     step = 1;
     firstNumber = Number(numArray.join(""));
     display.value = firstNumber;
+    calculationDisplay.value =
+      firstNumber + (operation ? ` ${operation} ` : "");
   } else if (step === 2) {
     secondNumArray.push(num);
     secondNumber = Number(secondNumArray.join(""));
     display.value = secondNumber;
+    calculationDisplay.value = `${firstNumber} ${operation} ${secondNumber}`;
   }
 }
 
@@ -32,11 +36,13 @@ function getOperator(op) {
   if (step === 1) {
     step = 2;
     operation = op;
+    calculationDisplay.value = `${firstNumber} ${operation}`;
   }
 }
 
 function clearDisplay() {
   display.value = 0;
+  calculationDisplay.value = "";
   firstNumber = null;
   secondNumber = null;
   step = 0;
@@ -47,22 +53,25 @@ function clearDisplay() {
 }
 
 const calculateEquals = () => {
-  if (operation === "+") {
-    result = firstNumber + secondNumber;
-  } else if (operation === "-") {
-    result = firstNumber - secondNumber;
-  } else if (operation === "*") {
-    result = firstNumber * secondNumber;
-  } else if (operation === "/") {
-    result = secondNumber !== 0 ? firstNumber / secondNumber : "Error";
+  if (operation && secondNumber != null) {
+    if (operation === "+") {
+      result = firstNumber + secondNumber;
+    } else if (operation === "-") {
+      result = firstNumber - secondNumber;
+    } else if (operation === "*") {
+      result = firstNumber * secondNumber;
+    } else if (operation === "/") {
+      result = secondNumber !== 0 ? firstNumber / secondNumber : "Error"; // Avoid division by zero
+    }
+    calculationDisplay.value = `${firstNumber} ${operation} ${secondNumber} =`;
+    display.value = result;
+    firstNumber = result; // Set result as the first number for further calculations
+    numArray = [result]; // Update numArray to allow further operations
+    secondNumArray = [];
+    step = 1; // Reset step to accept a new operator
+    secondNumber = null;
+    operation = null;
   }
-  display.value = result;
-  firstNumber = result; // Set result as the first number for further calculations
-  numArray = [result]; // Update numArray to allow further operations
-  secondNumArray = [];
-  step = 1; // Reset step to accept a new operator
-  secondNumber = null;
-  operation = null;
 };
 
 function delLastInput() {
@@ -70,11 +79,13 @@ function delLastInput() {
     numArray.pop();
     firstNumber = numArray.length > 0 ? Number(numArray.join("")) : 0;
     display.value = firstNumber;
+    calculationDisplay.value =
+      firstNumber + (operation ? ` ${operation} ` : "");
   } else if (step === 2 && secondNumArray.length > 0) {
     secondNumArray.pop();
     secondNumber =
       secondNumArray.length > 0 ? Number(secondNumArray.join("")) : 0;
-    display.value = secondNumber;
+    calculationDisplay.value = `${firstNumber} ${operation} ${secondNumber}`;
   }
 }
 
